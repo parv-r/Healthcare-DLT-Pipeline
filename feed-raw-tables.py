@@ -13,7 +13,7 @@ path2 = "/Volumes/healthcare_dlt/default/healthcare_data/patients_daily_file_2_2
 path3 = "/Volumes/healthcare_dlt/default/healthcare_data/patients_daily_file_3_2024.csv"
 
 df1 = spark.read.option("header", "true").option("inferSchema", "true").csv(f"{path3}")
-df1 = df1.withColumn("admission_date", df1["admission_date"].cast("date"))
+df1 = df1.withColumn("admission_date", to_date(col("admission_date")))
 
 display(df1)
 
